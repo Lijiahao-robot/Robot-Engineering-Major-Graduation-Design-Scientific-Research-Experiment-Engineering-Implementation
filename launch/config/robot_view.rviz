@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rviz>
+  <version>1.14.0</version>
+  <background>
+    <color>0.05098039215686274 0.05098039215686274 0.05098039215686274</color>
+  </background>
+  <fixed_frame>map</fixed_frame>
+  <global_options>
+    <frame_rate>30</frame_rate>
+    <background_color>48 48 48</background_color>
+    <default_light>true</default_light>
+    <enabled>true</enabled>
+  </global_options>
+  <!-- 激光点云（红色） -->
+  <display>
+    <name>Laser Scan</name>
+    <type>rviz_default_plugins/PointCloud2</type>
+    <topic>/scan</topic>
+    <size>0.05</size>
+    <color>255 0 0</color>
+    <enabled>true</enabled>
+  </display>
+  <!-- 机器人模型 -->
+  <display>
+    <name>Robot Model</name>
+    <type>rviz_default_plugins/RobotModel</type>
+    <topic>/robot_description</topic>
+    <enabled>true</enabled>
+  </display>
+  <!-- 里程计位姿（绿色） -->
+  <display>
+    <name>Odometry</name>
+    <type>rviz_default_plugins/Odometry</type>
+    <topic>/odom</topic>
+    <color>0 255 0</color>
+    <position_tolerance>0.1</position_tolerance>
+    <angle_tolerance>0.1</angle_tolerance>
+    <enabled>true</enabled>
+  </display>
+  <!-- 融合定位位姿（蓝色） -->
+  <display>
+    <name>Fused Odometry</name>
+    <type>rviz_default_plugins/Odometry</type>
+    <topic>/fused_odom</topic>
+    <color>0 0 255</color>
+    <position_tolerance>0.1</position_tolerance>
+    <angle_tolerance>0.1</angle_tolerance>
+    <enabled>true</enabled>
+  </display>
+  <!-- 速度指令（黄色） -->
+  <display>
+    <name>Command Velocity</name>
+    <type>rviz_default_plugins/TwistStamped</type>
+    <topic>/cmd_vel</topic>
+    <color>255 255 0</color>
+    <scale>0.5</scale>
+    <enabled>true</enabled>
+  </display>
+  <!-- 坐标系树 -->
+  <display>
+    <name>TF</name>
+    <type>rviz_default_plugins/TF</type>
+    <show_names>true</show_names>
+    <show_arrows>true</show_arrows>
+    <show_axes>true</show_axes>
+    <frame_timeout>15</frame_timeout>
+    <enabled>true</enabled>
+  </display>
+  <!-- 栅格地图 -->
+  <display>
+    <name>Map</name>
+    <type>rviz_default_plugins/Map</type>
+    <topic>/map</topic>
+    <color>128 128 128</color>
+    <enabled>true</enabled>
+  </display>
+</rviz>
