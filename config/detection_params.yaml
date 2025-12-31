@@ -1,0 +1,5 @@
+# 视觉检测参数（适配嵌入式）
+confidence_threshold: 0.4  # 检测置信度阈值
+iou_threshold: 0.3         # 非极大值抑制阈值
+target_classes: [0, 2, 39, 62]  # 目标类别：人员、车辆、纸箱、货架
+input_size: [640, 480]     # 输入图像尺寸（减小以提升速度）
