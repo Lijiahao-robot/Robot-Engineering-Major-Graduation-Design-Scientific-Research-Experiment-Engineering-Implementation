@@ -1,0 +1,8 @@
+rl_avoidance/
+├── src/
+│   ├── rl_env.py       # 机器人避障强化学习环境
+│   ├── rl_train.py     # 模型训练脚本
+│   └── rl_avoid_node.py # 训练好的模型推理节点
+├── models/             # 训练好的 PPO 模型权重
+├── package.xml
+└── setup.py
