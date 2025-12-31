@@ -1,0 +1,7 @@
+arduino_comm/
+├── src/
+│   ├── arduino_comm_node.cpp  # 串口通信节点
+│   └── arduino/
+│       └── robot_chassis.ino  # Arduino 底盘控制代码
+├── CMakeLists.txt
+└── package.xml
