@@ -1,0 +1,6 @@
+fault_diagnosis/
+├── src/
+│   ├── fault_diagnosis_node.cpp  # 故障诊断核心节点
+│   └── fault_config.yaml         # 故障配置文件
+├── CMakeLists.txt
+└── package.xml
