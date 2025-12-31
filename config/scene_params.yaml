@@ -1,0 +1,20 @@
+# 场景参数配置
+scenes:
+  empty_room:  # 空旷房间
+    pid_kp: 0.4
+    pid_ki: 0.05
+    pid_kd: 0.03
+    safe_radius: 0.5
+    energy_save_vel: 0.15
+  corridor:  # 狭长走廊
+    pid_kp: 0.6
+    pid_ki: 0.12
+    pid_kd: 0.06
+    safe_radius: 0.4
+    energy_save_vel: 0.1
+  warehouse:  # 仓储环境（多货架）
+    pid_kp: 0.5
+    pid_ki: 0.08
+    pid_kd: 0.04
+    safe_radius: 0.7
+    energy_save_vel: 0.08
