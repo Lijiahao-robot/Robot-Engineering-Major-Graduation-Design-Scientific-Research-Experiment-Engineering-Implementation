@@ -25,3 +25,14 @@
    cd ~/ros2_robot_final/src
    # 将所有功能包放入 src 目录
    cd ~/ros2_robot_final
+安装依赖
+./install_deps.sh
+编译工程
+colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
+一键启动
+./run_all.sh
+动态调参示例
+# 修改 PID 比例系数
+ros2 param set /pid_velocity_node kp 0.6
+# 修改避障安全半径
+ros2
