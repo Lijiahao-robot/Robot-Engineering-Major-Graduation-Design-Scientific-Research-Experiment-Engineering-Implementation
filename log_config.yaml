@@ -1,0 +1,13 @@
+log_settings:
+  log_level: "INFO"  # DEBUG/INFO/WARN/ERROR/CRITICAL
+  log_dir: "./robot_logs"
+  log_rotate: 7  # 日志保留7天，自动轮转
+  log_format: "[%(timestamp)s] [%(node_name)s] [%(levelname)s] %(message)s"
+
+nodes:
+  - name: pid_velocity_node
+    log_level: "DEBUG"  # 控制节点日志级别调高，方便调优
+  - name: fault_diagnosis_node
+    log_level: "ERROR"  # 故障节点只输出错误日志，减少冗余
+  - name: rl_avoid_node
+    log_level: "INFO"
