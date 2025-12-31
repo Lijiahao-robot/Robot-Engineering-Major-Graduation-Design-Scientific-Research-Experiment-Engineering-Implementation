@@ -36,3 +36,9 @@ colcon build --symlink-install --cmake-args -DCMAKE_BUILD_TYPE=Release
 ros2 param set /pid_velocity_node kp 0.6
 # 修改避障安全半径
 ros2
+跨平台通信配置
+修改 .bashrc 文件，添加多机通信配置
+export ROS_DOMAIN_ID=10
+export ROS_LOCALHOST_ONLY=0
+export ROS_IP=本机IP地址
+export ROS_MASTER_URI=http://主节点IP:11311
