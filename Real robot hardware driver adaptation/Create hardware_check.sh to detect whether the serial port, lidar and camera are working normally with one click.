@@ -1,0 +1,40 @@
+#!/bin/bash
+LOG_FILE="./hardware_check.log"
+
+log() {
+  echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a $LOG_FILE
+}
+
+log "===== 开始硬件检测 ====="
+
+# 1. 检测串口设备
+log "1. 检测串口设备..."
+ls /dev/ttyUSB* /dev/ttyACM* | tee -a $LOG_FILE || log "未检测到串口设备"
+
+# 2. 检测激光雷达（RPLIDAR）
+log "2. 检测激光雷达..."
+if ros2 topic list | grep -q "/scan"; then
+  ros2 topic echo /scan --noarr -n 1 | tee -a $LOG_FILE
+  log "激光雷达正常"
+else
+  log "激光雷达未连接"
+fi
+
+# 3. 检测深度相机（RealSense）
+log "3. 检测深度相机..."
+if ros2 topic list | grep -q "/camera/depth/color/points"; then
+  ros2 topic echo /camera/depth/color/points --noarr -n 1 | tee -a $LOG_FILE
+  log "深度相机正常"
+else
+  log "深度相机未连接"
+fi
+
+# 4. 检测底盘通信
+log "4. 检测底盘通信..."
+if ros2 node list | grep -q "/arduino_comm_node"; then
+  log "底盘通信节点正常运行"
+else
+  log "底盘通信节点未启动"
+fi
+
+log "===== 硬件检测完成 ====="
