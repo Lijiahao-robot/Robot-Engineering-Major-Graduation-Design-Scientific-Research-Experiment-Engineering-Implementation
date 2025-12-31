@@ -1,0 +1,16 @@
+fault_rules:
+  - name: "laser_lost"
+    topic: "/scan"
+    timeout: 1.0  # 1秒无数据则判定故障
+    level: "warning"
+  - name: "camera_lost"
+    topic: "/camera/depth/color/points"
+    timeout: 1.0
+    level: "warning"
+  - name: "odom_lost"
+    topic: "/odom"
+    timeout: 0.5
+    level: "error"
+  - name: "pid_node_down"
+    node: "pid_velocity_node"
+    level: "critical"
