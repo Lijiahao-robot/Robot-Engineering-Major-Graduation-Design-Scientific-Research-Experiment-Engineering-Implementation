@@ -1,0 +1,47 @@
+# 月球机器人 MuJoCo 强化学习雏形代码
+# 运行环境：Python3 + MuJoCo + mujoco-py
+# 依赖安装：pip install mujoco-py gym
+
+import mujoco_py
+import gym
+import numpy as np
+
+class LunarRoverMuJoCo:
+    def __init__(self, model_path="lunar_rover.xml"):
+        # 加载月球车MuJoCo模型（需自行准备xml模型文件）
+        self.model = mujoco_py.load_model_from_path(model_path)
+        self.sim = mujoco_py.MjSim(self.model)
+        self.viewer = mujoco_py.MjViewer(self.sim)
+        self.action_space = np.zeros(2)  # 动作：线性速度/角速度
+
+    # 执行动作
+    def step(self, action):
+        self.sim.data.ctrl[:] = action
+        self.sim.step()
+        # 获取状态（月球车位置、速度等）
+        obs = self.sim.data.qpos.flat[:]
+        reward = -np.linalg.norm(obs[:2])  # 奖励：靠近目标点
+        done = False if np.linalg.norm(obs[:2]) > 0.1 else True
+        return obs, reward, done
+
+    # 重置机器人状态
+    def reset(self):
+        self.sim.reset()
+        return self.sim.data.qpos.flat[:]
+
+    # 可视化运行
+    def run(self, episodes=5):
+        for ep in range(episodes):
+            obs = self.reset()
+            done = False
+            total_reward = 0
+            while not done:
+                self.viewer.render()
+                action = np.random.uniform(-0.5, 0.5, 2)  # 随机动作（后续替换为强化学习模型）
+                obs, reward, done = self.step(action)
+                total_reward += reward
+            print(f"Episode {ep+1}: Total Reward = {total_reward:.2f}")
+
+if __name__ == "__main__":
+    rover = LunarRoverMuJoCo()
+    rover.run()
