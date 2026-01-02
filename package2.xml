@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>robot_policy</name>
+  <version>0.0.1</version>
+  <description>Real robot policy inference</description>
+
+  <maintainer email="you@todo.com">you</maintainer>
+  <license>MIT</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>sensor_msgs</exec_depend>
+</package>
